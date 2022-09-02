@@ -9,7 +9,7 @@ export default function Index() {
   return (
     <div className="h-full w-5/6 relative sm:mt-12">
       <div className="absolute right-0 sm:pr-10">
-        <img src="/images/satelite.png" alt="imagen de satelite" className="floating" width="200" />
+        <img src="/images/satelite.png" alt="imagen de satelite" className="floating" />
       </div>
       <div className="flex max-w-lg mx-auto flex-col justify-center mb-9 h-full px-4 pt-16">
         <h1 className="text-5xl font-bold text-green-600">Hola 👋</h1>
