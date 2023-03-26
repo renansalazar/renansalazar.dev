@@ -1,6 +1,6 @@
 ---
  title: Aplicación con Sveltekit(Primera parte)
- pubDate: Dec 2 2023
+ pubDate: Mar 26 2023
  heroImage: /img/svelte-kit-machine.png
  layout: ../../layouts/BlogLayout.astro
 ---
