@@ -1,0 +1,11 @@
+---
+const {heroImage, pubDate, title, slug} = Astro.props
+---
+
+<a
+  class="hover:bg-slate-500 hover:text-slate-100 block rounded-lg p-3 border-solid border-green-700 border duration-100" 
+  href={"/blog/" + slug}>
+  <img src={heroImage} />
+  <time>{pubDate}</time>
+  {title}
+</a>

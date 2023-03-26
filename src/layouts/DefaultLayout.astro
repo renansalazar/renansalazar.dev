@@ -1,0 +1,60 @@
+---
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Renan Salazar</title>
+	</head>
+	<body class="dark:bg-slate-800 dark:text-slate-100">
+		<div class="max-w-4xl mx-auto">
+			<nav class="flex justify-between items-center">
+				<a href="/">
+					<img src="/img/logo.svg" width="32" >
+				</a>
+				<ul class="flex gap-4 justify-end py-4 text-xl font-medium">
+					<li>
+						<a href="/blog" class="hover:text-green-500">Blog</a>
+					</li>
+					<li>
+						<a href="/#proyectos" class="hover:text-green-500">Proyectos</a>
+					</li>
+					<li>
+						<a href="/#contacto" class="hover:text-green-500">Contacto</a>
+					</li>
+					<li class="border rounded-xl bg-gray-500 overflow-hidden flex justify-between"><button id="light-mode" class="dark:bg-slate-200 bg-gray-500 px-1" title="Cambiar tema">🌞</button>
+					<button id="dark-mode" class="bg-slate-200 dark:bg-gray-500 px-1" title="Cambiar tema">🌚</button>
+					</li>
+				</ul>
+			</nav>
+			<slot />
+			<footer class="mx-auto text-xl text-center py-4">
+				Desarrollado con 💚 por Renan Salazar
+			</footer>
+		</div>
+	</body>
+	<script>
+		function checkMode () {
+			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark')
+			} else {
+				document.documentElement.classList.remove('dark')
+			}
+		}
+		checkMode()
+		const buttonDarkMode = document.querySelector("#dark-mode")
+		buttonDarkMode.addEventListener('click', function() {
+			localStorage.theme = 'dark'
+			checkMode()
+		})
+
+		const buttonLightMode = document.querySelector("#light-mode")
+		buttonLightMode.addEventListener('click', function() {
+			localStorage.theme = 'light'
+			checkMode()
+		})
+</script>
+</html>
