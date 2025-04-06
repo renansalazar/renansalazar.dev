@@ -3,6 +3,7 @@ import DefaultLayout from '../layouts/DefaultLayout.astro';
 import { getCollection } from 'astro:content';
 import Link from '../components/Link.astro';
 import Card from '../components/Card.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -46,9 +47,9 @@ const projects = [
 			<h2 id="blog" class="text-3xl font-medium text-green-500">Últimos blogs</h2>
 			<a href="/blog" class="font-medium">Ver todos los blogs</a>
 		</div>
-		<ul class="grid grid-cols-4 gap-2">
+		<ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 			{posts.map(post=>(
-				<li>
+				<li class="h-full">
 					<Card slug={post.slug} heroImage={post.data.heroImage} pubDate={post.data.pubDate} title={post.data.title} />
 				</li>
 			))}
@@ -56,24 +57,19 @@ const projects = [
 	</div>
 	<div class="flex flex-col gap-4 pb-10">
 		<h2 id="proyectos" class="text-3xl font-medium text-green-500">Proyectos</h2>
-		<ul class="flex flex-col">
+		<ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 			{
-				projects.map(projectItem => {
-					return (
-						<li>
-							<h2 class="text-2xl font-bold tracking-tight">{projectItem.title}</h2>
-							<p class="my-2">
-								{projectItem.description}
-							</p>
-							<img src={projectItem.image} alt="imagen de rocketcv" width="100%" />
-							<div class="flex gap-4 my-4">
-								<Link text="Repo" icon="github" to={projectItem.repositorio} color="slate" />
-								<Link text="Live Demo" to={projectItem.url} color="green" />
-							</div>
-							<hr class="mb-4"/>
-						</li>
-					)
-				})
+				projects.map(projectItem => (
+					<li class="h-full">
+						<ProjectCard 
+							title={projectItem.title}
+							description={projectItem.description}
+							image={projectItem.image}
+							repositorio={projectItem.repositorio}
+							url={projectItem.url}
+						/>
+					</li>
+				))
 			}
 		</ul>
 	</div>

@@ -1,0 +1,16 @@
+---
+const {title, description, image, repositorio, url} = Astro.props;
+import Link from './Link.astro';
+---
+
+<div class="flex flex-col h-full rounded-lg border-solid border-green-700 border p-4">
+  <h2 class="text-xl font-bold tracking-tight mb-3">{title}</h2>
+  <img src={image} alt={`imagen de ${title}`} class="w-full h-48 object-cover rounded-md mb-3" />
+  <p class="mb-4 flex-1">
+    {description}
+  </p>
+  <div class="flex flex-col items-start gap-2">
+    <Link text="Repositorio" icon="github" to={repositorio} color="slate" size="small" />
+    <Link text="Demo en vivo" to={url} color="green" size="small" />
+  </div>
+</div> 
